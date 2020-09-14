@@ -1,12 +1,18 @@
-﻿using System;
+﻿using StrategyPattern.Context;
+using StrategyPattern.Model;
+using StrategyPattern.Strategy;
+using System;
 
 namespace StrategyPattern
 {
-    class Client
+    internal class Client
     {
-        static void Main(string[] args)
+        private static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            Item item = new Item { Name = "Smartphone", Price = 50000 };
+            ItemContext context = new ItemContext(new NewYearStrategy());
+            Console.WriteLine($"Price of {item.Name} = {context.GetItemNetPrice(item)}");
+            Console.ReadLine();
         }
     }
 }
